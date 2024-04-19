@@ -1,0 +1,322 @@
+
+*::after,
+*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.html{
+    font-size: 62.5%;
+}
+
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines{
+    display: none;
+}
+@font-face {
+    font-family: fuente1;
+    src: url(youngserif-regular.woff);
+
+}
+.container{
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+}
+
+.navbar{
+    
+    width: 100%;
+    height: 85px;
+    background:black;
+    color: white;
+    z-index: 100;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    align-items: center;
+    
+}
+
+.menu-items{
+    order: 2;
+    display: flex;
+    
+}
+.nombre{
+    font-family: fuente1;
+    margin: auto;
+    font-size: 2.2rem;
+    margin-left: -10px;
+    margin-top: 16px;
+}
+.logo{
+    margin-top: 10px;
+    margin-left: -40px;
+}
+
+.menu-items li{
+    list-style: none;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;   
+    font-family: fuente1;
+    font-size: 20px;
+}
+
+.navbar a:hover{
+    color: #0E46A3;
+}
+
+@media (max-width: 768px){
+    .navbar{
+        opacity: 0.95;
+    }
+
+    .navbar-container input[type="checkbox"],
+    .navbar-container .hamburger-lines{
+        display: block;
+    }
+
+    .navbar-container{
+        display: block;
+        position: relative;
+        height: 64px;
+    }
+
+    .navbar-container input[type="checkbox"]{
+        position: absolute;
+        display: block;
+        height: 32px;
+        width: 30px;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .navbar-container .hamburger-lines{
+        display: block;
+        height: 28px;
+        width: 35px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .navbar-container .hamburger-lines .line{
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #333;
+    }
+    
+    .navbar-container .hamburger-lines .line1{
+        transform-origin: 0% 0%;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar-container .hamburger-lines .line2{
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .navbar-container .hamburger-lines .line3{
+        transform-origin: 0% 100%;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar .menu-items{
+        padding-top: 100px;
+        background: #fff;
+        height: 100vh;
+        max-width: 300px;
+        transform: translate(-150%);
+        display: flex;
+        flex-direction: column;
+        margin-left: -40px;
+        padding-left: 40px;
+        transition: transform 0.5s ease-in-out;
+        box-shadow:  5px 0px 10px 0px #aaa;
+        overflow: scroll;
+    }
+
+    .navbar .menu-items li{
+        margin-bottom: 1.8rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+
+    .navbar-container input[type="checkbox"]:checked ~ .menu-items{
+        transform: translateX(0);
+    }
+
+    .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1{
+        transform: rotate(45deg);
+    }
+
+    .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2{
+        transform: scaleY(0);
+    }
+
+    .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3{
+        transform: rotate(-45deg);
+    }
+
+}
+
+  .video-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor-princi{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.contenedor2{
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    background-color: #01082d;
+    
+    
+}
+@font-face {
+    font-family: fuente2;
+    src: url(Aileron-Light.otf);
+}
+.contenedor3{
+    font-family: fuente2;
+    background-color: white;
+    height: 100vh;
+    text-align: center;
+    padding-top: 200px;
+    line-height: 1.7;
+    margin-left: 70px;
+    padding-right: 60px;
+
+}
+.bienvenido{
+    padding-top: 50px;
+}
+.video2{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+
+}
+
+.video{
+    width: 100%;
+    opacity: 0.80;
+}
+.texto-sobre-video {
+    border-radius: 3px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #01082d;
+    z-index: 1;
+    line-height: 1.7;
+    font-weight: bold;
+    text-shadow: 10px 2px 20px rgba(0, 0,0, 0.5);
+}
+.boton{
+    
+    position: absolute;
+    font-size: 20px;
+    top: 150px;
+    left: 37%;
+    text-align: center;
+    color: white;
+    z-index: 3;   
+    background-color: #1336a8;
+    width: 155px;
+    height: 50px;
+    border-radius: 25px;
+    box-shadow: 5px 6px 20px 0px #fff ;
+}
+.boton:hover{
+    background-color: #c529d0;
+    transition: 3s;
+}
+
+.hospedaje{
+    background-image: url("https://lanaciondominicana.com/imgs_contenido/noticias/2021/01/live.jpeg");
+    background-size: cover;
+    opacity: 0.90;
+    width: 100%;
+    padding-top:100px;
+    height: 100vh;
+    padding-left: 65px;
+}
+
+.titulohospedaje {
+    margin-bottom: 60px;
+    margin-left: 400px;
+}
+
+.input {
+    display: inline-block;
+    width: 45%;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 10px 20px 20px #000;
+    font-weight: bold;
+    font-family: fuente1;
+}
+
+.input label {
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.input input,
+.input select {
+    background-color: #01082d;
+    color: white;
+    width: 60%;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.calcular{
+    display: block;
+    width: 10%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-left: 525px;
+}
+
+.calcular:hover {
+    background-color: #0056b3;
+}

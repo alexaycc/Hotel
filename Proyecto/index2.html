@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Hospedaje</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Hospedaje</h1>
+        <form id="formularioHospedaje">
+            <div class="input">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div class="input">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" required>
+            </div>
+            <div class="input">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" required>
+            </div>
+            <div class="input">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" placeholder="example@gmail.com">
+            </div>
+            <div class="input">
+                <label for="mesViaje">Mes de su viaje:</label>
+                <select id="mesViaje"></select>
+
+            </div>
+            <div class="input">
+                <label for="diaEntrada">Día de entrada:</label>
+                <select id="diaEntrada">
+                   
+                </select>
+            </div>
+            <div class="input">
+                <label for="diaSalida" >Día de salida:</label>
+                <select id="diaSalida">
+                    <!-- Opciones generadas dinámicamente con JavaScript -->
+                </select>
+            </div>
+            <div class="input">
+                <label for="adultos">Cantidad de adultos:</label>
+                <input type="number" id="adultos" min="1" value="1" required>
+            </div>
+            <div class="input">
+                <label for="ninos">Cantidad de niños:</label>
+                <input type="number" id="ninos"  required>
+            </div>
+            <div class="input">
+                <label for="noches">Cantidad de noches :</label>
+                <input type="number" id="noches"  required max="20">
+            </div>
+            <div class="input">
+                <label for="precioNoche">Precio por noche:</label >
+                <input type="number" id="precioNoche"  required>
+            </div>
+            <div class="input">
+                <label for="precioAdulto">Precio por adulto:</label >
+                <input type="number" id="precioAdulto"  required >
+            </div>
+            <div class="input">
+                <label for="precioNino">Precio por niño:</label>
+                <input type="number" id="precioNino"  required>
+            </div>
+            <button class="calcular" type="button" onclick="calcular()">Calcular</button>
+        </form>
+    
+       
+    </div>
+    
+
+    <script>
+var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+var diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+function Meses() {
+    var selectMeses = document.getElementById("mesViaje");
+
+    meses.forEach(function(mes) {
+        var opcion = new Option(mes, mes);
+        selectMeses.add(opcion);
+    });
+}
+
+Meses();
+
+function Dias(selectId) {
+    var selectDia = document.getElementById(selectId);
+    selectDia.innerHTML = "";
+
+    var fechaActual = new Date();
+    var diaActual = fechaActual.getDate();
+
+    for (var i = 1; i <= 31; i++) {
+        var fecha = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), i);
+        var opcion = new Option(diasSemana[fecha.getDay()] + ", " + i, i);
+        selectDia.add(opcion);
+    }
+}
+
+Dias("diaEntrada");
+Dias("diaSalida");
+
+function calcular() {
+    var mesViaje = document.getElementById("mesViaje").value;
+    var diaEntrada = document.getElementById("diaEntrada").value;
+    var diaSalida = document.getElementById("diaSalida").value;
+    var adultos = parseInt(document.getElementById("adultos").value);
+    var ninos = parseInt(document.getElementById("ninos").value);
+    var noches = parseInt(document.getElementById("noches").value);
+    var precioNoche = parseInt(document.getElementById("precioNoche").value);
+    var precioAdulto = parseInt(document.getElementById("precioAdulto").value);
+    var precioNino = parseInt(document.getElementById("precioNino").value);
+
+    
+    var subtotalNoches = precioNoche * noches;
+
+    var subtotalAdultos = adultos * precioAdulto * noches;
+    var subtotalNinos = ninos * precioNino * noches;
+    var subtotalHabitacion = subtotalNoches + subtotalAdultos + subtotalNinos;
+
+    var descuento = subtotalHabitacion * 0.3;
+    var totalDescuento = subtotalHabitacion - descuento;
+
+    var itbis = totalDescuento * 0.18;
+
+    var totalGeneral = totalDescuento + itbis;
+
+function mostrarResultados() {
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var telefono = document.getElementById("telefono").value;
+    var correo = document.getElementById("correo").value;
+
+    document.write("<b><font size=4px ><h2>Información de Hospedaje</h2></b>");
+    document.write("<b><p>Nombre: </b>" + nombre + " " + apellido + "</p>");
+    document.write("<b><p>Teléfono: </b>" + telefono + "</p>");
+    document.write("<b><p>Correo electrónico: </b>" + correo + "</p>");
+    document.write("<b><p>Cantidad de noches: </b>" + noches + "</p>");
+    document.write("<b><p>Subtotal noches:</b> RD$" + subtotalNoches + "</p>");
+    document.write("<b><p>Subtotal adultos:</b> RD$" + subtotalAdultos + "</p>");
+    document.write("<b><p>Subtotal niños: </b>RD$" + subtotalNinos + "</p>");
+    document.write("<b><p>Subtotal habitación:</b> RD$ " + subtotalHabitacion + "</p>");
+    document.write("<b><p>Descuento (30%):</b> RD$ " + descuento + "</p>");
+    document.write("<b><p>ITBIS (18%): </b>RD$ " + itbis.toFixed(2) + "</p>");
+    document.write("<b><h3>Total General: RD$ </b>" + totalGeneral + "</h3>");
+    document.write("<b>Hecho por: </b>" , "Alexa Casilla");
+}
+
+mostrarResultados();
+
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Neumorphism Sidebar Menu | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    
+   </head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="#sobre">Sobre nosotros</a></li>
+                <li><a href="#reservar">Reserva</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                
+            </ul>
+            <img  class="logo"  src="Capture-removebg-preview.png" alt="">
+            <h1 class="nombre">C.C Hotel & Resort</h1>
+        </div>
+    </nav>
+
+
+    <div class="texto-sobre-video">
+        <h1>Bienvenido al C.C Hotel & Resort</h1>
+        <p>Descubre un mundo de serenidad y relajación en nuestro exclusivo hotel & resort.</p>
+       <a href="#reserva"> <button class="boton">Reserva ahora!</button></a>
+    </div>
+
+    <div  class="video-container">
+        
+        
+        <video  class="video" autoplay loop muted>
+            <source src="video.mp4" type="video/mp4">
+            
+             </video>
+             
+    </div>
+
+    <div id="sobre" class="contenedor-princi">
+    <div class="contenedor2">
+        <video  class="video2" autoplay loop muted>
+            <source src="video2.mp4" type="video/mp4">
+    </div>
+    <div class="contenedor3">
+        <h1 >Bienvenido a C.C. Hotel & Resort</h1>
+        <p class="bienvenido">En C.C. Hotel & Resort, nos enorgullece ofrecer una experiencia única y memorable para nuestros huéspedes, combinando la elegancia del lujo con la calidez de un servicio excepcional. Ubicado en un entorno paradisíaco, nuestro resort es el destino ideal para aquellos que buscan escapar de la rutina y sumergirse en un oasis de relajación y confort.</p>
+    </div>
+</div>
+
+
+
+
+<!-- FORMULARIO -->
+
+<div id="reservar" id="reserva" class="hospedaje">
+
+    <div class="container">
+        <h1 class="titulohospedaje">Calculadora de Hospedaje</h1>
+        <form id="formularioHospedaje">
+            <div class="input">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div class="input">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" required>
+            </div>
+            <div class="input">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" required>
+            </div>
+            <div class="input">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" placeholder="example@gmail.com">
+            </div>
+            <div class="input">
+                <label for="mesViaje">Mes de su viaje:</label>
+                <select id="mesViaje"></select>
+
+            </div>
+            <div class="input">
+                <label for="diaEntrada">Día de entrada:</label>
+                <select id="diaEntrada">
+                   
+                </select>
+            </div>
+            <div class="input">
+                <label for="diaSalida" >Día de salida:</label>
+                <select id="diaSalida">
+                  
+                </select>
+            </div>
+            <div class="input">
+                <label for="adultos">Cantidad de adultos:</label>
+                <input type="number" id="adultos"  required>
+            </div>
+            <div class="input">
+                <label for="ninos">Cantidad de niños:</label>
+                <input type="number" id="ninos"  required>
+            </div>
+            <div class="input">
+                <label for="noches">Cantidad de noches :</label>
+                <input type="number" id="noches"  required max="20">
+            </div>
+            <div class="input">
+                <label for="precioNoche">Precio por noche:</label >
+                <input type="number" id="precioNoche"  required>
+            </div>
+            <div class="input">
+                <label for="precioAdulto">Precio por adulto:</label >
+                <input type="number" id="precioAdulto"  required >
+            </div>
+            <div class="input">
+                <label for="precioNino">Precio por niño:</label>
+                <input type="number" id="precioNino"  required>
+            </div>
+            <button class="calcular" type="button" onclick="calcular()">Calcular</button>
+        </form>
+    
+       
+    </div>
+    
+
+    <script>
+        
+var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+var diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+function Meses() {
+    var selectMeses = document.getElementById("mesViaje");
+
+    meses.forEach(function(mes) {
+        var opcion = new Option(mes, mes);
+        selectMeses.add(opcion);
+    });
+}
+
+Meses();
+
+function Dias(selectId) {
+    var selectDia = document.getElementById(selectId);
+    selectDia.innerHTML = "";
+
+    var fechaActual = new Date();
+    var diaActual = fechaActual.getDate();
+
+    for (var i = 1; i <= 31; i++) {
+        var fecha = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), i);
+        var opcion = new Option(diasSemana[fecha.getDay()] + ", " + i, i);
+        selectDia.add(opcion);
+    }
+}
+
+Dias("diaEntrada");
+Dias("diaSalida");
+
+function calcular() {
+    var mesViaje = document.getElementById("mesViaje").value;
+    var diaEntrada = document.getElementById("diaEntrada").value;
+    var diaSalida = document.getElementById("diaSalida").value;
+    var adultos = parseInt(document.getElementById("adultos").value);
+    var ninos = parseInt(document.getElementById("ninos").value);
+    var noches = parseInt(document.getElementById("noches").value);
+    var precioNoche = parseInt(document.getElementById("precioNoche").value);
+    var precioAdulto = parseInt(document.getElementById("precioAdulto").value);
+    var precioNino = parseInt(document.getElementById("precioNino").value);
+
+    
+    var subtotalNoches = precioNoche * noches;
+
+    var subtotalAdultos = adultos * precioAdulto * noches;
+    var subtotalNinos = ninos * precioNino * noches;
+    var subtotalHabitacion = subtotalNoches + subtotalAdultos + subtotalNinos;
+
+    var descuento = subtotalHabitacion * 0.3;
+    var totalDescuento = subtotalHabitacion - descuento;
+
+    var itbis = totalDescuento * 0.18;
+
+    var totalGeneral = totalDescuento + itbis;
+
+function mostrarResultados() {
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var telefono = document.getElementById("telefono").value;
+    var correo = document.getElementById("correo").value;
+
+    document.write("<b><font size=4px ><h2>Información de Hospedaje</h2></b>");
+    document.write("<b><p>Nombre: </b>" + nombre + " " + apellido + "</p>");
+    document.write("<b><p>Teléfono: </b>" + telefono + "</p>");
+    document.write("<b><p>Correo electrónico: </b>" + correo + "</p>");
+    document.write("<b><p>Cantidad de noches: </b>" + noches + "</p>");
+    document.write("<b><p>Subtotal noches:</b> RD$" + subtotalNoches + "</p>");
+    document.write("<b><p>Subtotal adultos:</b> RD$" + subtotalAdultos + "</p>");
+    document.write("<b><p>Subtotal niños: </b>RD$" + subtotalNinos + "</p>");
+    document.write("<b><p>Subtotal habitación:</b> RD$ " + subtotalHabitacion + "</p>");
+    document.write("<b><p>Descuento (30%):</b> RD$ " + descuento + "</p>");
+    document.write("<b><p>ITBIS (18%): </b>RD$ " + itbis.toFixed(2) + "</p>");
+    document.write("<b><h3>Total General: RD$ </b>" + totalGeneral + "</h3>");
+    document.write("<b>Hecho por: </b>" , "Alexa Casilla");
+}
+
+mostrarResultados();
+
+
+}
+
+    </script>
+
+
+</body>
+</html>
